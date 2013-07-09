@@ -16,11 +16,11 @@
 
 # To Build:
 # sudo yum -y install rpmdevtools gmp-devel && rpmdev-setuptree
-# wget wget http://www.haskell.org/ghc/dist/6.12.3/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2 -O ~/rpmbuild/SOURCES/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2
+# wget http://www.haskell.org/ghc/dist/6.12.3/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2 -O ~/rpmbuild/SOURCES/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2
 # wget https://raw.github.com/nmilford/rpm-ghc-bootsrap-compiler6/master/ghc-bootsrap-compiler6.spec -O ~/rpmbuild/SPECS/ghc-bootsrap-compiler6.spec
 # rpmbuild -bb ~/rpmbuild/SPECS/ghc-bootsrap-compiler6.spec
 
-Name:           ghc-bootsrap-compiler6
+Name:           ghc-bootstrap-compiler6
 Version:        6.12.3
 Release:        1
 Summary:        Glasgow Haskell Compiler version able to bootstrap GHC 7.0.x
@@ -29,7 +29,7 @@ License:        The Glasgow Haskell Compiler License
 URL:            http://www.haskell.org/ghc/
 Source0:        http://www.haskell.org/ghc/dist/%{version}/ghc-%{version}-x86_64-unknown-linux-n.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildDepends:   gmp-devel
+BuildRequires:  gmp-devel
 
 %description
 GHC is a state-of-the-art, open source, compiler and interactive environment

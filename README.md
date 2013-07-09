@@ -18,7 +18,7 @@ To Build:
 
 `sudo yum -y install rpmdevtools gmp-devel && rpmdev-setuptree`
 
-`wget wget http://www.haskell.org/ghc/dist/6.12.3/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2 -O ~/rpmbuild/SOURCES/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2`
+`wget http://www.haskell.org/ghc/dist/6.12.3/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2 -O ~/rpmbuild/SOURCES/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2`
 
 `wget https://raw.github.com/nmilford/rpm-ghc-bootsrap-compiler6/master/ghc-boostrap-compiler6.spec -O ~/rpmbuild/SPECS/ghc-bootsrap-compiler6.spec`
 
