@@ -46,12 +46,12 @@ You can use this to build an intermediary GHC version to get you to the latest.
 %install
 install -d -m 755 %{buildroot}/usr/
 
-%configure
+%configure --docdir=%{buildroot}/usr/share/doc/ghc-%{version}/
 %makeinstall
 rm -f %{buildroot}/usr/bin/ghc
 rm -f %{buildroot}/usr/bin/ghc-pkg
 rm -f %{buildroot}/usr/bin/ghci
-rm -rf %{buildroot}/usr/share*
+rm -rf %{buildroot}/usr/share/man/*
 mv %{buildroot}/usr/bin/haddock{,-%{version}}
 mv %{buildroot}/usr/bin/hp2ps{,-%{version}}
 mv %{buildroot}/usr/bin/hpc{,-%{version}}
@@ -59,10 +59,15 @@ mv %{buildroot}/usr/bin/hsc2hs{,-%{version}}
 mv %{buildroot}/usr/bin/runghc{,-%{version}}
 mv %{buildroot}/usr/bin/runhaskell{,-%{version}}
 
+install -d -m 755 %{buildroot}/usr/share/doc/ghc-%{version}
+install    -m 644 %{_builddir}/ghc-%{version}/README  %{buildroot}/usr/share/doc/ghc-%{version}
+install    -m 644 %{_builddir}/ghc-%{version}/LICENSE %{buildroot}/usr/share/doc/ghc-%{version}
+
 %files
 %defattr(-,root,root)
 %{_libdir}/ghc-%{version}
 %{_bindir}/*
+/usr/share/doc/ghc-%{version}/*
 
 %changelog
 * Mon Jul 08 2013 Nathan Milford <nathan@milford.io> 6.12.3-1
