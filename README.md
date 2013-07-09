@@ -16,7 +16,7 @@ So we need to build ghc-7.0.2 from source with ghc-6.12.3 binaries to allow us b
 
 To Build:
 
-`sudo yum -y install rpmdevtools && rpmdev-setuptree`
+`sudo yum -y install rpmdevtools gmp-devel && rpmdev-setuptree`
 
 `wget wget http://www.haskell.org/ghc/dist/6.12.3/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2 -O ~/rpmbuild/SOURCES/ghc-6.12.3-x86_64-unknown-linux-n.tar.bz2`
 
