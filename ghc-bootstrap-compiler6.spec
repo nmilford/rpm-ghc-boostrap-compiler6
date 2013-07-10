@@ -65,7 +65,7 @@ install    -m 644 %{_builddir}/ghc-%{version}/LICENSE %{buildroot}/usr/share/doc
 
 %files
 %defattr(-,root,root)
-%{_libdir}/ghc-%{version}
+%{_libdir}/ghc*
 %{_bindir}/*
 /usr/share/doc/ghc-%{version}/*
 
