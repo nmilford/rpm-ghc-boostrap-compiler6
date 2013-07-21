@@ -47,6 +47,7 @@ You can use this to build an intermediary GHC version to get you to the latest.
 install -d -m 755 %{buildroot}/usr/
 
 %configure --docdir=%{buildroot}/usr/share/doc/ghc-%{version}/
+
 %makeinstall
 rm -f %{buildroot}/usr/bin/ghc
 rm -f %{buildroot}/usr/bin/ghc-pkg
@@ -62,6 +63,25 @@ mv %{buildroot}/usr/bin/runhaskell{,-%{version}}
 install -d -m 755 %{buildroot}/usr/share/doc/ghc-%{version}
 install    -m 644 %{_builddir}/ghc-%{version}/README  %{buildroot}/usr/share/doc/ghc-%{version}
 install    -m 644 %{_builddir}/ghc-%{version}/LICENSE %{buildroot}/usr/share/doc/ghc-%{version}
+
+for file in ghc-%{version} ghci-%{version} ghc-pkg-%{version} haddock-%{version} hp2ps-%{version} hpc-%{version} hsc2hs-%{version} runghc-%{version}; do
+  sed -i -e  's|%{buildroot}||g' %{buildroot}%{_bindir}/$file
+done
+
+rm -f %{buildroot}/%{_libdir}/ghc-%{_bindir}/package.conf.d/package.cache
+
+
+cd %{buildroot}/%{_libdir}/ghc-%{version}/package.conf.d/
+for pkg in *; do
+  sed -i -e  's|%{buildroot}||g' $pkg
+done
+cd -
+
+%post
+%{_bindir}/ghc-pkg-%{version} recache
+
+%clean
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
